@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apple TV+</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Perfil Ativo -->
+  <div class="active-profile-section" id="activeProfileSection">
+    <div class="active-profile">
+      <img id="activeProfileImage" src="" alt="Perfil ativo" class="profile-image">
+      <span id="activeProfileName" class="profile-name"></span>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <svg class="apple-logo" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <span class="logo-text">TV+</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-section="home" onclick="showSection('home', this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Início</span>
+      </a>
+      <a href="#" class="nav-item" data-section="movies" onclick="showSection('movies', this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+        <span>Filmes</span>
+      </a>
+      <a href="#" class="nav-item" data-section="series" onclick="showSection('series', this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>
+        <span>Séries</span>
+      </a>
+      <a href="#" class="nav-item" data-section="kids" onclick="showSection('kids', this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.5 2C6.81 2 3 5.81 3 10.5S6.81 19 11.5 19h.5v3c4.86-2.34 8-7 8-11.5C20 5.81 16.19 2 11.5 2zm1 14.5h-2v-2h2v2zm.4-4.78c-.01.01-.03.01-.04.03-.04.04-.08.08-.11.12-.03.04-.06.09-.08.13-.02.05-.04.1-.05.16-.01.05-.01.1-.01.16h-2.01c0-.31.07-.59.18-.86.11-.27.27-.51.48-.72.19-.19.36-.38.51-.59.15-.21.27-.43.37-.68.1-.25.15-.51.15-.8 0-.46-.15-.84-.45-1.12-.3-.28-.69-.42-1.15-.42-.47 0-.84.15-1.12.45-.28.3-.42.7-.42 1.18H8c0-.95.32-1.71.97-2.27.64-.56 1.47-.84 2.48-.84.54 0 1.03.09 1.46.26.43.18.79.42 1.09.73.29.31.52.67.67 1.08.16.41.23.85.23 1.31 0 .27-.04.52-.1.76-.07.24-.17.47-.3.68-.14.22-.3.43-.49.63z"/></svg>
+        <span>Kids</span>
+      </a>
+      <a href="#" class="nav-item" data-section="search" onclick="showSection('search', this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <span>Buscar</span>
+      </a>
+      <a href="#" class="nav-item" data-section="settings" onclick="showSection('settings', this)">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
+        <span>Configurações</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-profile">
+      <div class="profile-avatar">LL</div>
+      <div class="profile-info">
+        <span class="profile-name">Luyd Lima</span>
+        <span class="profile-plan">Apple One</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- HOME SECTION -->
+    <section class="section active" id="section-home">
+      <!-- Hero -->
+      <div class="hero" id="hero">
+        <div class="hero-bg" id="heroBg">
+          <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-badge">Em Destaque</div>
+          <h1 class="hero-title" id="heroTitle">Severance</h1>
+          <p class="hero-desc" id="heroDesc">Funcionários de uma corporação misteriosa passam por um procedimento cirúrgico que divide sua memória entre vida profissional e pessoal.</p>
+          <div class="hero-meta" id="heroMeta">
+            <span class="badge">18+</span>
+            <span>2022</span>
+            <span>Sci-Fi • Drama</span>
+            <span>★ 8.7</span>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-play" onclick="openModal('hero')">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Assistir
+            </button>
+            <button class="btn-info" onclick="openModal('hero')">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 002 12a10 10 0 0010 10 10 10 0 0010-10A10 10 0 0012 2z"/></svg>
+              Detalhes
+            </button>
+          </div>
+        </div>
+        <div class="hero-dots">
+          <span class="dot active" onclick="changeHero(0)"></span>
+          <span class="dot" onclick="changeHero(1)"></span>
+          <span class="dot" onclick="changeHero(2)"></span>
+          <span class="dot" onclick="changeHero(3)"></span>
+        </div>
+      </div>
+
+      <!-- Continue Watching -->
+      <div class="content-row">
+        <h2 class="row-title">Continuar Assistindo</h2>
+        <div class="cards-scroll">
+          <div class="card card-wide" onclick="openModal('severance')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)">
+              <span class="card-emoji">🏢</span>
+              <div class="card-progress"><div class="progress-bar" style="width:65%"></div></div>
+            </div>
+            <div class="card-info">
+              <span class="card-title">Severance</span>
+              <span class="card-sub">T2 E4 • 35min restantes</span>
+            </div>
+          </div>
+          <div class="card card-wide" onclick="openModal('tedlasso')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #2d5a27, #4a7c59, #7fb069)">
+              <span class="card-emoji">⚽</span>
+              <div class="card-progress"><div class="progress-bar" style="width:30%"></div></div>
+            </div>
+            <div class="card-info">
+              <span class="card-title">Ted Lasso</span>
+              <span class="card-sub">T3 E2 • 42min restantes</span>
+            </div>
+          </div>
+          <div class="card card-wide" onclick="openModal('monarch')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #3d0000, #7b1111, #c0392b)">
+              <span class="card-emoji">👑</span>
+              <div class="card-progress"><div class="progress-bar" style="width:80%"></div></div>
+            </div>
+            <div class="card-info">
+              <span class="card-title">Monarch</span>
+              <span class="card-sub">T1 E6 • 18min restantes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apple Originals -->
+      <div class="content-row">
+        <h2 class="row-title">Apple Originals</h2>
+        <div class="cards-scroll">
+          <div class="card" onclick="openModal('foundation')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #0d1b2a, #1b4332, #40916c)">
+              <span class="card-emoji">🌌</span>
+            </div>
+            <div class="card-info"><span class="card-title">Foundation</span></div>
+          </div>
+          <div class="card" onclick="openModal('slowhorses')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #2c2c54, #474787, #aaa69d)">
+              <span class="card-emoji">🕵️</span>
+            </div>
+            <div class="card-info"><span class="card-title">Slow Horses</span></div>
+          </div>
+          <div class="card" onclick="openModal('morning')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #f39c12, #e74c3c, #c0392b)">
+              <span class="card-emoji">📺</span>
+            </div>
+            <div class="card-info"><span class="card-title">The Morning Show</span></div>
+          </div>
+          <div class="card" onclick="openModal('blackbird')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #444)">
+              <span class="card-emoji">🐦</span>
+            </div>
+            <div class="card-info"><span class="card-title">Black Bird</span></div>
+          </div>
+          <div class="card" onclick="openModal('schmigadoon')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #6c3483, #a569bd, #f1948a)">
+              <span class="card-emoji">🎭</span>
+            </div>
+            <div class="card-info"><span class="card-title">Schmigadoon!</span></div>
+          </div>
+          <div class="card" onclick="openModal('pachinko')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #b7410e, #e67e22, #f1c40f)">
+              <span class="card-emoji">🌸</span>
+            </div>
+            <div class="card-info"><span class="card-title">Pachinko</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filmes em Destaque -->
+      <div class="content-row">
+        <h2 class="row-title">Filmes em Destaque</h2>
+        <div class="cards-scroll">
+          <div class="card" onclick="openModal('killers')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1c1c1c, #8B0000, #DC143C)">
+              <span class="card-emoji">🔫</span>
+            </div>
+            <div class="card-info"><span class="card-title">Killers of the Flower Moon</span></div>
+          </div>
+          <div class="card" onclick="openModal('napoleon')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #2c3e50, #3498db, #ecf0f1)">
+              <span class="card-emoji">⚔️</span>
+            </div>
+            <div class="card-info"><span class="card-title">Napoleon</span></div>
+          </div>
+          <div class="card" onclick="openModal('coda')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a3a4a, #2980b9, #aed6f1)">
+              <span class="card-emoji">🎵</span>
+            </div>
+            <div class="card-info"><span class="card-title">CODA</span></div>
+          </div>
+          <div class="card" onclick="openModal('tetris')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #1a0533, #6c3483, #e91e8c)">
+              <span class="card-emoji">🎮</span>
+            </div>
+            <div class="card-info"><span class="card-title">Tetris</span></div>
+          </div>
+          <div class="card" onclick="openModal('ghosted')">
+            <div class="card-thumb" style="background: linear-gradient(135deg, #0d4c73, #1e8bc3, #5dade2)">
+              <span class="card-emoji">💨</span>
+            </div>
+            <div class="card-info"><span class="card-title">Ghosted</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVIES SECTION -->
+    <section class="section" id="section-movies">
+      <div class="section-header">
+        <h1 class="section-title">Filmes</h1>
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterContent(this)">Todos</button>
+          <button class="filter-tab" onclick="filterContent(this)">Ação</button>
+          <button class="filter-tab" onclick="filterContent(this)">Drama</button>
+          <button class="filter-tab" onclick="filterContent(this)">Comédia</button>
+          <button class="filter-tab" onclick="filterContent(this)">Sci-Fi</button>
+          <button class="filter-tab" onclick="filterContent(this)">Thriller</button>
+        </div>
+      </div>
+      <div class="grid-content">
+        <div class="grid-card" onclick="openModal('killers')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #1c1c1c, #8B0000, #DC143C)"><span>🔫</span></div>
+          <div class="grid-label">Killers of the Flower Moon</div>
+          <div class="grid-meta">2023 • Drama • ★ 7.6</div>
+        </div>
+        <div class="grid-card" onclick="openModal('napoleon')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #2c3e50, #3498db, #ecf0f1)"><span>⚔️</span></div>
+          <div class="grid-label">Napoleon</div>
+          <div class="grid-meta">2023 • Histórico • ★ 6.5</div>
+        </div>
+        <div class="grid-card" onclick="openModal('coda')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #1a3a4a, #2980b9, #aed6f1)"><span>🎵</span></div>
+          <div class="grid-label">CODA</div>
+          <div class="grid-meta">2021 • Drama • ★ 7.6</div>
+        </div>
+        <div class="grid-card" onclick="openModal('tetris')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #1a0533, #6c3483, #e91e8c)"><span>🎮</span></div>
+          <div class="grid-label">Tetris</div>
+          <div class="grid-meta">2023 • Drama • ★ 7.1</div>
+        </div>
+        <div class="grid-card" onclick="openModal('ghosted')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #0d4c73, #1e8bc3, #5dade2)"><span>💨</span></div>
+          <div class="grid-label">Ghosted</div>
+          <div class="grid-meta">2023 • Ação • ★ 5.7</div>
+        </div>
+        <div class="grid-card" onclick="openModal('raymond')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #2e4a1e, #5d8a3c, #a8c97f)"><span>🌿</span></div>
+          <div class="grid-label">Raymond & Ray</div>
+          <div class="grid-meta">2022 • Drama • ★ 6.7</div>
+        </div>
+        <div class="grid-card" onclick="openModal('wolfthrow')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #4a1a00, #8b3a00, #d4621b)"><span>🐺</span></div>
+          <div class="grid-label">Emancipation</div>
+          <div class="grid-meta">2022 • Drama • ★ 6.3</div>
+        </div>
+        <div class="grid-card" onclick="openModal('finch')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #1a2a4a, #2c4a8a, #4a7bc0)"><span>🤖</span></div>
+          <div class="grid-label">Finch</div>
+          <div class="grid-meta">2021 • Sci-Fi • ★ 7.3</div>
+        </div>
+        <div class="grid-card" onclick="openModal('palmer')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #2d2d2d, #4a4a4a, #8a6a3c)"><span>🏈</span></div>
+          <div class="grid-label">Palmer</div>
+          <div class="grid-meta">2021 • Drama • ★ 7.4</div>
+        </div>
+        <div class="grid-card" onclick="openModal('cherry')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #3a0a1a, #7a1a3a, #c0306a)"><span>🍒</span></div>
+          <div class="grid-label">Cherry</div>
+          <div class="grid-meta">2021 • Crime • ★ 6.7</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERIES SECTION -->
+    <section class="section" id="section-series">
+      <div class="section-header">
+        <h1 class="section-title">Séries</h1>
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterContent(this)">Todos</button>
+          <button class="filter-tab" onclick="filterContent(this)">Drama</button>
+          <button class="filter-tab" onclick="filterContent(this)">Comédia</button>
+          <button class="filter-tab" onclick="filterContent(this)">Thriller</button>
+          <button class="filter-tab" onclick="filterContent(this)">Sci-Fi</button>
+        </div>
+      </div>
+      <div class="grid-content">
+        <div class="grid-card" onclick="openModal('severance')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)"><span>🏢</span></div>
+          <div class="grid-label">Severance</div>
+          <div class="grid-meta">2022 • Thriller • ★ 8.7</div>
+        </div>
+        <div class="grid-card" onclick="openModal('tedlasso')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #2d5a27, #4a7c59, #7fb069)"><span>⚽</span></div>
+          <div class="grid-label">Ted Lasso</div>
+          <div class="grid-meta">2020 • Comédia • ★ 8.8</div>
+        </div>
+        <div class="grid-card" onclick="openModal('foundation')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #0d1b2a, #1b4332, #40916c)"><span>🌌</span></div>
+          <div class="grid-label">Foundation</div>
+          <div class="grid-meta">2021 • Sci-Fi • ★ 7.4</div>
+        </div>
+        <div class="grid-card" onclick="openModal('morning')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #f39c12, #e74c3c, #c0392b)"><span>📺</span></div>
+          <div class="grid-label">The Morning Show</div>
+          <div class="grid-meta">2019 • Drama • ★ 8.3</div>
+        </div>
+        <div class="grid-card" onclick="openModal('slowhorses')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #2c2c54, #474787, #aaa69d)"><span>🕵️</span></div>
+          <div class="grid-label">Slow Horses</div>
+          <div class="grid-meta">2022 • Thriller • ★ 8.1</div>
+        </div>
+        <div class="grid-card" onclick="openModal('pachinko')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #b7410e, #e67e22, #f1c40f)"><span>🌸</span></div>
+          <div class="grid-label">Pachinko</div>
+          <div class="grid-meta">2022 • Drama • ★ 8.4</div>
+        </div>
+        <div class="grid-card" onclick="openModal('monarch')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #3d0000, #7b1111, #c0392b)"><span>👑</span></div>
+          <div class="grid-label">Monarch</div>
+          <div class="grid-meta">2022 • Drama • ★ 6.0</div>
+        </div>
+        <div class="grid-card" onclick="openModal('blackbird')">
+          <div class="grid-thumb" style="background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #444)"><span>🐦</span></div>
+          <div class="grid-label">Black Bird</div>
+          <div class="grid-meta">2022 • Crime • ★ 8.3</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KIDS SECTION -->
+    <section class="section" id="section-kids">
+      <div class="section-header">
+        <h1 class="section-title">Kids & Família</h1>
+      </div>
+      <div class="kids-banner">
+        <div class="kids-banner-content">
+          <div class="kids-emoji-cloud">🦁 🐟 🚀 🧸 🦋 🌈</div>
+          <h2>Diversão para toda a família!</h2>
+          <p>Conteúdo seguro e divertido para crianças de todas as idades</p>
+        </div>
+      </div>
+      <div class="grid-content">
+        <div class="grid-card" onclick="openModal('stillwater')">
+          <div class="grid-thumb kids-thumb" style="background: linear-gradient(135deg, #ff6b35, #f7c59f, #efefd0)"><span>🐯</span></div>
+          <div class="grid-label">Stillwater</div>
+          <div class="grid-meta">Animação • 4+ anos</div>
+        </div>
+        <div class="grid-card" onclick="openModal('slumberkins')">
+          <div class="grid-thumb kids-thumb" style="background: linear-gradient(135deg, #a8edea, #fed6e3)"><span>🦊</span></div>
+          <div class="grid-label">Slumberkins</div>
+          <div class="grid-meta">Animação • 3+ anos</div>
+        </div>
+        <div class="grid-card" onclick="openModal('peanuts')">
+          <div class="grid-thumb kids-thumb" style="background: linear-gradient(135deg, #ffd93d, #6bcb77, #4d96ff)"><span>🐶</span></div>
+          <div class="grid-label">Peanuts</div>
+          <div class="grid-meta">Animação • Todos</div>
+        </div>
+        <div class="grid-card" onclick="openModal('pretend')">
+          <div class="grid-thumb kids-thumb" style="background: linear-gradient(135deg, #c77dff, #e0aaff, #ff9ef5)"><span>✨</span></div>
+          <div class="grid-label">Pretend</div>
+          <div class="grid-meta">Animação • 5+ anos</div>
+        </div>
+        <div class="grid-card" onclick="openModal('duck')">
+          <div class="grid-thumb kids-thumb" style="background: linear-gradient(135deg, #06d6a0, #118ab2, #ffd166)"><span>🦆</span></div>
+          <div class="grid-label">Duck & Goose</div>
+          <div class="grid-meta">Animação • Todos</div>
+        </div>
+        <div class="grid-card" onclick="openModal('helpme')">
+          <div class="grid-thumb kids-thumb" style="background: linear-gradient(135deg, #ff595e, #ffca3a, #6a4c93)"><span>🚗</span></div>
+          <div class="grid-label">Hello, Jack!</div>
+          <div class="grid-meta">Educativo • 4+ anos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEARCH SECTION -->
+    <section class="section" id="section-search">
+      <div class="section-header">
+        <h1 class="section-title">Buscar</h1>
+      </div>
+      <div class="search-container">
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" placeholder="Filmes, séries, atores..." id="searchInput" oninput="handleSearch(this.value)" />
+        </div>
+        <div class="search-categories">
+          <h3>Categorias</h3>
+          <div class="category-grid">
+            <div class="category-card" style="background: linear-gradient(135deg, #e74c3c, #c0392b)" onclick="filterByCategory('Drama')">Drama</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #3498db, #2980b9)" onclick="filterByCategory('Sci-Fi')">Sci-Fi</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #27ae60, #229954)" onclick="filterByCategory('Comédia')">Comédia</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #9b59b6, #8e44ad)" onclick="filterByCategory('Thriller')">Thriller</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #f39c12, #e67e22)" onclick="filterByCategory('Ação')">Ação</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #1abc9c, #16a085)" onclick="filterByCategory('Família')">Família</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #e91e63, #c2185b)" onclick="filterByCategory('Romance')">Romance</div>
+            <div class="category-card" style="background: linear-gradient(135deg, #607d8b, #455a64)" onclick="filterByCategory('Documentário')">Documentário</div>
+          </div>
+        </div>
+        <div class="search-results" id="searchResults" style="display:none">
+          <h3>Resultados</h3>
+          <div class="grid-content" id="searchGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS SECTION -->
+    <section class="section" id="section-settings">
+      <div class="section-header">
+        <h1 class="section-title">Configurações</h1>
+      </div>
+      <div class="settings-container">
+
+        <!-- Profile -->
+        <div class="settings-profile-card">
+          <div class="settings-avatar">LL</div>
+          <div>
+            <h3>Luyd Lima</h3>
+            <p>luydlima@icloud.com</p>
+            <span class="plan-badge">Apple One Premier</span>
+          </div>
+          <button class="btn-edit" onclick="showToast('Editar perfil em breve!')">Editar</button>
+        </div>
+
+        <!-- Settings Groups -->
+        <div class="settings-groups">
+
+          <div class="settings-group">
+            <h3 class="group-title">Reprodução</h3>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Qualidade de Vídeo</span>
+                <span class="settings-item-desc">Automático com base na conexão</span>
+              </div>
+              <select class="settings-select" onchange="showToast('Qualidade alterada!')">
+                <option>Automático</option>
+                <option>4K HDR</option>
+                <option>1080p</option>
+                <option>720p</option>
+              </select>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Reprodução Automática</span>
+                <span class="settings-item-desc">Iniciar próximo episódio automaticamente</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked onchange="showToast(this.checked ? 'Reprodução automática ativada' : 'Reprodução automática desativada')">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Legendas</span>
+                <span class="settings-item-desc">Idioma padrão das legendas</span>
+              </div>
+              <select class="settings-select" onchange="showToast('Idioma de legendas alterado!')">
+                <option>Português (Brasil)</option>
+                <option>English</option>
+                <option>Español</option>
+                <option>Desativado</option>
+              </select>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Áudio Padrão</span>
+                <span class="settings-item-desc">Idioma preferido de áudio</span>
+              </div>
+              <select class="settings-select" onchange="showToast('Idioma de áudio alterado!')">
+                <option>Português (Brasil)</option>
+                <option>English</option>
+                <option>Original</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3 class="group-title">Conta & Assinatura</h3>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Plano Atual</span>
+                <span class="settings-item-desc">Apple One Premier — R$ 49,90/mês</span>
+              </div>
+              <button class="btn-settings" onclick="showToast('Gerenciar plano em breve!')">Gerenciar</button>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Forma de Pagamento</span>
+                <span class="settings-item-desc">•••• •••• •••• 4242</span>
+              </div>
+              <button class="btn-settings" onclick="showToast('Editar pagamento em breve!')">Editar</button>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Compartilhamento Familiar</span>
+                <span class="settings-item-desc">5 membros da família</span>
+              </div>
+              <button class="btn-settings" onclick="showToast('Compartilhamento familiar em breve!')">Ver</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3 class="group-title">Notificações</h3>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Novos Episódios</span>
+                <span class="settings-item-desc">Avise quando novos episódios estiverem disponíveis</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked onchange="showToast(this.checked ? 'Notificações ativadas' : 'Notificações desativadas')">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Recomendações</span>
+                <span class="settings-item-desc">Sugestões personalizadas de conteúdo</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" onchange="showToast(this.checked ? 'Recomendações ativadas' : 'Recomendações desativadas')">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Promoções e Ofertas</span>
+                <span class="settings-item-desc">Receber emails sobre ofertas especiais</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" onchange="showToast(this.checked ? 'Emails ativados' : 'Emails desativados')">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3 class="group-title">Privacidade</h3>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Histórico de Visualização</span>
+                <span class="settings-item-desc">Usado para recomendações personalizadas</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" checked onchange="showToast(this.checked ? 'Histórico ativado' : 'Histórico desativado')">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="settings-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label">Controle dos Pais</span>
+                <span class="settings-item-desc">Restringir conteúdo por classificação</span>
+              </div>
+              <button class="btn-settings" onclick="showToast('Controle parental em breve!')">Configurar</button>
+            </div>
+            <div class="settings-item danger-item">
+              <div class="settings-item-info">
+                <span class="settings-item-label danger-text">Limpar Histórico</span>
+                <span class="settings-item-desc">Remover todo o histórico de visualização</span>
+              </div>
+              <button class="btn-danger" onclick="showToast('Histórico limpo com sucesso!')">Limpar</button>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h3 class="group-title">Sobre</h3>
+            <div class="settings-item">
+              <span class="settings-item-label">Versão do App</span>
+              <span class="settings-item-desc">1.0.0</span>
+            </div>
+            <div class="settings-item clickable" onclick="showToast('Política de Privacidade aberta!')">
+              <span class="settings-item-label">Política de Privacidade</span>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+            <div class="settings-item clickable" onclick="showToast('Termos de Uso abertos!')">
+              <span class="settings-item-label">Termos de Uso</span>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+            <div class="settings-item clickable" onclick="showToast('Suporte iniciado!')">
+              <span class="settings-item-label">Suporte</span>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sign Out -->
+        <button class="btn-signout" onclick="showToast('Saindo da conta...')">Sair da Conta</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" id="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-hero">
+        <div class="modal-bg" id="modalBg"></div>
+        <div class="modal-hero-emoji" id="modalEmoji"></div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-badge" id="modalBadge"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-meta" id="modalMeta"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-cast" id="modalCast"></div>
+        <div class="modal-actions">
+          <button class="btn-play" onclick="startPlay()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Assistir Agora
+          </button>
+          <button class="btn-wishlist" id="wishlistBtn" onclick="toggleWishlist()">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Minha Lista
+          </button>
+          <button class="btn-share" onclick="showToast('Link copiado!')">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+            Compartilhar
+          </button>
+        </div>
+        <div class="modal-episodes" id="modalEpisodes"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Video Player -->
+  <div class="player-overlay" id="playerOverlay">
+    <div class="player">
+      <button class="player-close" onclick="closePlayer()">✕</button>
+      <div class="player-screen">
+        <div class="player-logo">
+          <svg viewBox="0 0 24 24" fill="white" width="60"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span style="color:white;font-size:28px;font-weight:700;letter-spacing:-1px">TV+</span>
+        </div>
+        <div class="player-spinner"></div>
+        <p class="player-loading" id="playerTitle">Carregando...</p>
+      </div>
+      <div class="player-controls">
+        <div class="player-progress">
+          <div class="player-bar"><div class="player-fill" id="playerFill"></div></div>
+          <div class="player-time"><span id="playerCurrent">0:00</span><span id="playerTotal">0:00</span></div>
+        </div>
+        <div class="player-buttons">
+          <button onclick="playerAction('back')">⏮</button>
+          <button onclick="playerAction('play')" id="playPauseBtn" class="btn-big-play">▶</button>
+          <button onclick="playerAction('forward')">⏭</button>
+          <button onclick="playerAction('volume')">🔊</button>
+          <button onclick="playerAction('sub')">CC</button>
+          <button onclick="playerAction('full')" style="margin-left:auto">⛶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
